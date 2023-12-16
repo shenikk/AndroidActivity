@@ -8,34 +8,12 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/alert_button"
+    <TextView
+        android:id="@+id/increment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alert dialog"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/permission_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Permission dialog"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/activity_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="0"
+        android:textSize="160dp"
+        />
 
 </LinearLayout>
