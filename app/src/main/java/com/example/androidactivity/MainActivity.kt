@@ -8,15 +8,25 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import coil.load
 
 /**
  * Learn more about activities
  * https://developer.android.com/guide/components/activities/activity-lifecycle
  */
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var imageView: ImageView
+
+    // Learn more https://developer.android.com/training/basics/intents/result
+    private val activityLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri: Uri? ->
+        imageView.load(imageUri)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         val alertButton = findViewById<Button>(R.id.alert_button)
         val permissionButton = findViewById<Button>(R.id.permission_button)
         val activityButton = findViewById<Button>(R.id.activity_button)
+        imageView = findViewById(R.id.image_view)
 
         alertButton.setOnClickListener {
             startAlertDialog()
@@ -36,6 +47,10 @@ class MainActivity : AppCompatActivity() {
             startSecondActivity()
         }
         println("MainActivity onCreate")
+    }
+
+    private fun startForResult() {
+        activityLauncher.launch(MIME_TYPE)
     }
 
     override fun onRestart() {
@@ -129,5 +144,9 @@ class MainActivity : AppCompatActivity() {
             data = Uri.parse("tel:" + "+79998887766")
         }
         startActivity(intent)
+    }
+
+    companion object {
+        private const val MIME_TYPE = "image/jpeg"
     }
 }
